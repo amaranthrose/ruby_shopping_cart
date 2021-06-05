@@ -1,6 +1,4 @@
-require_relative "./promotional_rule.rb"
-
-class CartPromotionalRule < PromotionalRule
+class CartPromotionalRule
   attr_accessor :minimum_total, :percentage_discount
 
   def initialize(minimum_total, percentage_discount)

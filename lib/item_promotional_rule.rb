@@ -1,6 +1,4 @@
-require_relative "./promotional_rule.rb"
-
-class ItemPromotionalRule < PromotionalRule
+class ItemPromotionalRule
   attr_accessor :item_code, :minimum_quantity, :new_price
 
   def initialize(item_code, minimum_quantity, new_price)
