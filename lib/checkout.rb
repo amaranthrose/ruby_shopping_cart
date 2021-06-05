@@ -1,10 +1,11 @@
 require './lib/checkout_item.rb'
 
 class Checkout
-  attr_accessor :scanned_items
+  attr_accessor :scanned_items, :promotional_rules
 
-  def initialize
+  def initialize(promo_rules = [])
     @scanned_items = {}
+    @promotional_rules = promo_rules
   end
 
   def scan(item)
@@ -19,6 +20,10 @@ class Checkout
     total = 0.0
     @scanned_items.each do |_item_code, item|
       total += (item.quantity * item.product.price)
+    end
+
+    promotional_rules.each do |promo_rule|
+      total = promo_rule.promo_total(total) if promo_rule.applies?(total)
     end
 
     total
