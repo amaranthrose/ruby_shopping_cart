@@ -21,23 +21,23 @@ class Checkout
     total = 0.0
 
     @scanned_items.each do |_item_code, item|
-      total += (item.quantity * item_price_with_promos(item))
+      total += (item.quantity * item.price_with_promos(item_promotional_rules))
     end
 
-    cart_promotional_rules.each do |promo_rule|
-      total = promo_rule.promo_price(total) if promo_rule.applies?(total)
-    end
-
-    total
+    total_with_promos(total)
   end
 
-  def item_price_with_promos(item)
-    price = item.product.price
+  def total_with_promos(total)
+    promo_prices = []
 
-    item_promotional_rules.each do |promo_rule|
-      price = promo_rule.promo_price(item) if promo_rule.applies?(item)
+    cart_promotional_rules.map do |promo_rule|
+      promo_prices << promo_rule.promo_price(total) if promo_rule.applies?(total)
     end
 
-    price
+    if promo_prices.empty?
+      total
+    else
+      promo_prices.min
+    end
   end
 end
