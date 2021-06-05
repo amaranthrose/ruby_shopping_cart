@@ -8,7 +8,7 @@ describe "Checkout" do
   let(:p_002) { Product.new("002", "Silver cufflinks", 45.00) }
   let(:p_003) { Product.new("003", "Silk dress", 19.95) }
 
-  let(:total_cart_promo) { CartPromotionalRule.new(60.0, 10) }
+  let(:total_cart_promo)  { CartPromotionalRule.new(60.0, 10) }
   let(:single_item_promo) { ItemPromotionalRule.new("001", 2, 8.50) }
   let(:promotional_rules) { {cart: [total_cart_promo], item: [single_item_promo]} }
 

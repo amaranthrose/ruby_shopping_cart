@@ -10,7 +10,7 @@ describe "CartPromotionalRule" do
     expect(promo.applies?(0.00)).to be false
   end
 
-  it "applies percantage_discount to the total" do
+  it "applies percentage_discount to the total" do
     expect(promo.promo_price(100.0)).to eq(90)
   end
 end

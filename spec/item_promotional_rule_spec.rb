@@ -11,7 +11,7 @@ describe "ItemPromotionalRule" do
   let(:ci_1)  { CheckoutItem.new(p_001) }
   let(:ci_2)  { CheckoutItem.new(p_002) }
 
-  it "applies only when code matches and quantity requirement is met" do
+  it "applies only when product code matches and quantity requirement is met" do
     # Both products have quantity 1
     expect(promo.applies?(ci_1)).to be false
     expect(promo.applies?(ci_2)).to be false
