@@ -3,7 +3,7 @@ require "./lib/checkout_item.rb"
 require "./lib/product.rb"
 
 describe "ItemPromotionalRule" do
-  let(:promo) { ItemPromotionalRule.new("001", 2, 8.50) }
+  let(:promo) { ItemPromotionalRule.new(:quantity_of_single_item, {item_code: "001", minimum_quantity: 2}, :override_price, {new_price: 8.50}) }
 
   let(:p_001) { Product.new("001", "Red Scarf", 9.25) }
   let(:p_002) { Product.new("002", "Silver cufflinks", 45.00) }

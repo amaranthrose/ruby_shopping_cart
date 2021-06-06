@@ -9,7 +9,7 @@ class CheckoutItem
   def price_with_promos(item_promotional_rules)
     promo_prices = []
     item_promotional_rules.map do |promo_rule|
-      promo_prices << promo_rule.promo_price(self) if promo_rule.applies?(self)
+      promo_prices << promo_rule.promo_price(product.price) if promo_rule.applies?(self)
     end
 
     if promo_prices.empty?

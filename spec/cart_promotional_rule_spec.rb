@@ -1,7 +1,7 @@
 require "./lib/cart_promotional_rule.rb"
 
 describe "CartPromotionalRule" do
-  let(:promo) { CartPromotionalRule.new(60.0, 10) }
+  let(:promo) { CartPromotionalRule.new(:total_cart_value, {minimum_total: 60.0}, :percentage, {percentage_discount: 10}) }
 
   it "applies when given total is equal or bigger than minimum" do
     expect(promo.applies?(65.0)).to be true
